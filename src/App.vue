@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-  
+  <!-- import the task component in the body of the app -->
     <Tasks/>
   </div>
 </template>
