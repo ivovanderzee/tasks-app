@@ -1,6 +1,5 @@
 <template>
   <div class="container">
-
     <!-- wrapper for the uncompleted tasks -->
     <div class="holderLeft">
       <!-- a form which calls the method addTask -->
@@ -16,7 +15,7 @@
           leave-active-class="animated slideOutRight"
         >
           <!-- creates a task list item for each task you add to the tasks AND are UNCOMPLETED -->
-          <li v-for="task in tasksMustDo"  v-bind:key="task.id">
+          <li v-for="task in tasksMustDo" v-bind:key="task.id">
             {{ task.name }}
             <button class="doneBtn" @click="setDone(task.id)">done</button>
           </li>
@@ -28,8 +27,7 @@
       <p v-else>You have nothing to do</p>
     </div>
 
-
-<!-- wrapper for the completed tasks -->
+    <!-- wrapper for the completed tasks -->
     <div class="holderRight">
       <ul>
         <!-- the wrapper transition group takes care of the animation when you add a task to your list -->
@@ -39,10 +37,10 @@
           leave-active-class="animated slideOutRight"
         >
           <!-- creates a task list item for each task you add to the tasks AND are COMPLETED  -->
-          <li v-for="task in tasksCompleted" v-bind:key="task.id">{{ task.name }}
-             <button class="deleteBtn" @click="deleteTask(task.id)">delete</button>
+          <li v-for="task in tasksCompleted" v-bind:key="task.id">
+            {{ task.name }}
+            <button class="deleteBtn" @click="deleteTask(task.id)">delete</button>
           </li>
-         
         </transition-group>
       </ul>
 
@@ -82,19 +80,16 @@ export default {
 
     setDone(id) {
       this.tasks[id].completed = true;
- 
     }
   },
 
   computed: {
-
     //generates the tasks the user has done
     tasksCompleted: function() {
       return this.tasks.filter(function(completed) {
         return completed.completed;
       });
     },
-    
 
     //generates the tasks the user still didn't do yet
     tasksMustDo: function() {
@@ -102,14 +97,24 @@ export default {
         return completed.completed == false;
       });
     }
-  },
-
+  }
 };
 </script>
 
 <!-- styling that is used in the app -->
 <style scoped>
 @import "https://cdn.jsdelivr.net/npm/animate.css@3.5.1";
+
+.container {
+  
+   display: flex;
+    justify-content: center;
+  overflow: hidden;
+
+
+
+
+}
 
 .holderLeft {
   background: #fff;
@@ -123,7 +128,8 @@ export default {
   float: left;
   width: 40%;
   overflow: hidden;
-  margin: 65px;
+  margin-left: 60px;
+
 }
 
 ul {
@@ -145,10 +151,6 @@ p {
   text-align: center;
   padding: 30px 0;
   color: gray;
-}
-
-.container {
-  margin: 0;
 }
 
 input {

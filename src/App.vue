@@ -31,7 +31,8 @@ body, html {
   height: 100%;
 }
 #app {
-    width: 80%;
+    width: 100%;
+   
 }
 
 </style>
